@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using EO.Pdf;
+using FluentValidation.Results;
 using GenRepositoryPattern.DAL.Repository;
 using GenRepositoryPattern.Models;
 using GenRepositoryPattern.Validation;
@@ -82,6 +83,12 @@ namespace GenRepositoryPattern.Controllers
             _employeeRepository.Delete(id);
             _employeeRepository.Save();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ConvertToPdf()
+        {
+            HtmlToPdf.ConvertUrl(@"C:\Users\ith\Downloads\Launch-master\index.html", @"C:\Users\ith\Downloads\Launch-master\result.html");
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult About()

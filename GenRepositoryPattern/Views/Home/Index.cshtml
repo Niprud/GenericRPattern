@@ -11,6 +11,9 @@
         <div class="col-md-6">
             <a href="#" data-reveal-id="Create" class="CreateBtn"><i class="glyphicon glyphicon-file">&nbsp;Add</i></a><br />
         </div>
+        <div>
+            <a href="#" data-reveal-id="convertToPdf" class="pdfBtn"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;</a>
+        </div>
 
         <div class="table table-responsive">
             <table class="table table-striped table-condensed flip-content">
@@ -73,10 +76,21 @@
 </div>
 
 <div id="Create" class="reveal-modal">
-    
+
 </div>
 
 @section Scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.pdfBtn').click(function () {
+
+                var url = '@Url.Action("ConvertToPdf", "Home")';
+                url = url + "?Id=" + this.id;
+                $('#convertToPdf').load(url);
+            });
+        });
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function () {
